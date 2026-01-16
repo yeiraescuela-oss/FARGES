@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FARGES</title>
+  <style>
+   body {
+  background-image: url(Images/body.jpg);
+  display: flex; justify-content: center;
+  align-items: flex-start; /* antes: center -> alinea el contenido desde arriba */
+  padding-top: 120px;      /* controla la distancia desde el top; ajusta a tu gusto */
+  height: 100vh; margin: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+/* Encabezado principal */
+.site-header {
+  position: fixed;  top: 25px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center;  gap: 8px;  padding: 25px 40px;
+  gap: 6px;  border-radius: 16px;  z-index: 100;  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+/* Título */
+.site-header h1 {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 700;
+  font-family: 'Montserrat',  sans-serif;
+  background: linear-gradient(90deg, #0077b6, #00b4d8, #0077b6 );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: textShift 6s linear infinite;
+}
+/* Animación suave del degradado */
+@keyframes textShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* contenedor como cuadrícula: 3 botones por fila */
+.contenedor {
+  display: grid; grid-template-columns: repeat(3, minmax(200px, 1fr)); gap: 40px; align-items: start;
+  padding: 35px; width: calc(100% - 40px); max-width: 1100px; margin-top: 60px; /*separacion superior entre header y botones */}
+/* botones: ajustar ancho para ocupar la columna */ 
+.neon, .neon2, .neon3, .neon4, .neon5, .neon6,.neon7{ 
+  width: 100%; 
+  max-width: none; 
+  box-sizing: border-box; 
+  display: flex; flex-direction: 
+  column; align-items: center; 
+  gap: 8px; padding: 15px 30px; 
+  background-color: rgba(255, 255, 255, 0.7); 
+  border: none; 
+  border-radius: 10px; color: #1b263b; 
+  font-size: 16px; cursor: pointer; 
+  transition: all .3s ease; 
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.3); /* solo sombra, sin borde */
+  text-align: center; margin: 10px; 
+} 
+  /* imagen dentro del botón */ 
+.neon img, .neon2 img, .neon3 img, .neon4 img, .neon5 img, .neon6 img,.neon7 img { 
+  width: 96px; height: 96px; object-fit: contain; border-radius: 8px; pointer-events: none; display: block; } 
+     /* texto del botón */
+.neon span, .neon2 span, .neon3 span, .neon4 span, .neon5 span, .neon6 span,.neon7 span { 
+        display: block;   font-size: 15px;  color: inherit;  pointer-events: none;  font-weight: bold;} 
+ .neon:hover, .neon2:hover, .neon3:hover, .neon4:hover, .neon5:hover, .neon6:hover,.neon7:hover { 
+  background-color: #84d7f8; 
+  color: #000000; 
+  border-color: none; 
+  box-shadow: 0 0 18px rgba(0, 174, 255, 0.8); 
+  transform: scale(1.08);
+ }
+ .contenedor .item { width: 120px; /* ajusta tamaño */ 
+    height: 120px;  object-fit: cover;  border-radius: 8px;  box-shadow: 0 6px 18px rgba(0,0,0,0.45); 
+    display: block;   align-self: center;  z-index: 0; }
+/* adaptaciones móviles */
+@media (max-width: 728px) {
+  .contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+}
+.btn {
+  position: absolute; bottom: 20px; right: 20px; padding: 25px 50px; background-color: rgba(255, 255, 255, 0.7); 
+  color: black;  border: none; border-radius: 8px; font-weight: 600; cursor: pointer; box-shadow: rgba(255, 255, 255, 0.7);  font-size: 120%;}
+.btn:hover { 
+  background-color: #84d7f8; 
+  color: #000000; 
+  border-color: none; 
+  box-shadow: 0 0 18px rgba(0, 174, 255, 0.8); 
+  transform: scale(1.08);
+ }
+  </style>
+  <link rel="icon" href="Images/icono.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Bienvenido a FARGES</h1>
+  </header>
+  <div class="contenedor">
+    <button class="neon" data-color="#77c1f9" data-link="info.html">
+      <img src="Images/im1.png" alt="im1">
+      <span>TABLETAS</span>
+    </button>
+
+    <button class="neon2" data-color="#77c1f9" data-link="info2.html">
+      <img src="Images/jarabe.png" alt="jarabe">
+      <span>JARABES</span>
+    </button>
+
+    <button class="neon3" data-color="#77c1f9" data-link="info3.html">
+      <img src="Images/jeringa.png" alt="jeringa">
+      <span>INYECCIONES</span>
+    </button>
+
+    <button class="neon4" data-color="#77c1f9" data-link="info4.html">
+      <img src="Images/crema.png" alt="crema">
+      <span>CREMAS / UNGÜENTOS</span>
+    </button>
+
+    <button class="neon5" data-color="#77c1f9" data-link="info5.html">
+      <img src="Images/gotas.png" alt="gotas">
+      <span>GOTAS</span>
+    </button>
+
+    <button class="neon6" data-color="#77c1f9" data-link="info6.html">
+      <img src="Images/insumos.png" alt="insumo">
+      <span>INSUMOS</span>
+    </button>
+     <button class="neon7 small-btn" data-color="#77c1f9" data-link="info7.html">
+  <img src="descarga (1).jpg" alt="Glosario">
+  <span>GLOSARIO</span>
+</button>
+  </div>
+
+   <div class="container">
+        <button class="btn" onclick="logout()">Cerrar Sesión</button>
+    </div>
+
+   <script src="js/log.js/regreso.js"></script>
+   <script src="js/log.js/sesion.js"></script>
+   <script src="js/botones.js"></script>
+</body>
+</html>
